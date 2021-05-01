@@ -1,6 +1,6 @@
 import { DEFAULTS, hideDom, showDom, makeNowFrom } from '../commons.mjs';
-import { createColumnChart, drawGoogleChart } from './google-charts.mjs';
-import getErrorChartPayload from './connector.mjs';
+import { createColumnChart, createLineChart, drawGoogleChart } from './google-charts.mjs';
+import { getAvgProcTimeChartPayload, getErrorChartPayload } from './connector.mjs';
 
 /**
  *
@@ -109,6 +109,17 @@ export const charts = {
         draw: drawGoogleChart,
         payloadToData: makeErrorChartPayloadToTimestampBuckets,
         getPayload: getErrorChartPayload,
+    },
+    'avgproctime': {
+        options: {
+            ...DEFAULTS.graphOptions,
+            title: 'Average Processing Time',
+            colors: ['purple'],
+        },
+        createChart: createLineChart,
+        draw: drawGoogleChart,
+        payloadToData: makeErrorChartPayloadToTimestampBuckets,
+        getPayload: getAvgProcTimeChartPayload,
     },
 };
 

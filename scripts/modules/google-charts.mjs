@@ -8,6 +8,11 @@ export function createAreaChart(chart) {
     chart.googleChart = new google.visualization.AreaChart(chartDom);
 }
 
+export function createLineChart(chart) {
+    const { chartDom } = chart;
+    chart.googleChart = new google.visualization.LineChart(chartDom);
+}
+
 export function drawGoogleChart(array, { googleChart, options }) {
     const data = google.visualization.arrayToDataTable(array);
     googleChart.draw(data, options);

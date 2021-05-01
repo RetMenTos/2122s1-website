@@ -1,6 +1,7 @@
 const host = `http://localhost:3000`;
 const END_POINTS = {
     errors: '/stats/errors',
+    avgproctime: '/stats/processing-times',
 };
 
 /**
@@ -39,7 +40,15 @@ function makeFromDurationUrl(baseUrl, from, duration) {
  * @param duration the amount of minutes from the `from` parameter
  * @returns a Promise that resolves with the Error Chart's payload.
  */
-export default function getErrorChartPayload(from, duration) {
+export function getErrorChartPayload(from, duration) {
     const url = makeFromDurationUrl(`${host}${END_POINTS.errors}`, from, duration);
     return getChartPayload(url);
 }
+
+export function getAvgProcTimeChartPayload(from, duration) {
+    const url = makeFromDurationUrl(`${host}${END_POINTS.avgproctime}`, from, duration);
+    return getChartPayload(url);
+}
+
+
+
